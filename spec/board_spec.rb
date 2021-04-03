@@ -39,4 +39,9 @@ describe Board do
     place = board.valid_placement?(cruiser, ["C1", "A2", "A1"])
     expect(place).to be(false)
   end
+
+  it 'is not valid on diagnols' do
+    place = board.valid_placement?(cruiser, ["A1", "B2", "C3"])
+    expect(place).to be(false)
+  end
 end

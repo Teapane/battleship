@@ -1,5 +1,4 @@
 require_relative './cell'
-require 'pry'
 
 class Board
   attr_reader :cells
@@ -7,16 +6,7 @@ class Board
   def initialize(height = 4, width = 4)
     @height = height
     @width = width
-    @cells = generate_cells
-  end
-
-  def generate_cells
-    letters.each_with_object({}) do |letter, hash|
-      numbers.each do |num|
-        hash[letter + num] = Cell.new(letter + num)
-      end
-      hash
-    end
+    @cells = create_board_with_cells
   end
 
   def valid_coordinate?(coordinate)
@@ -30,6 +20,15 @@ class Board
 
   private
 
+  def create_board_with_cells
+    letters.each_with_object({}) do |letter, hash|
+      numbers.each do |num|
+        hash[letter + num] = Cell.new(letter + num)
+      end
+      hash
+    end
+  end
+
   def letters
     "A".upto("D").to_a
   end
@@ -41,7 +40,6 @@ class Board
   def invalid_length?(ship, coords)
     coords.length != ship.length
   end
-
 
   def consecutive_coordinates?(coords)
     if on_same_row?(coords)
