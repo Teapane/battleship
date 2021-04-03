@@ -24,7 +24,7 @@ class Board
   end
 
   def valid_placement?(ship, coords)
-    false if valid_length?(ship, coords)
+    false if invalid_length?(ship, coords)
     consecutive_coordinates?(coords)
   end
 
@@ -38,7 +38,7 @@ class Board
     1.upto(4).to_a.map(&:to_s)
   end
 
-  def valid_length?(ship, coords)
+  def invalid_length?(ship, coords)
     coords.length != ship.length
   end
 
