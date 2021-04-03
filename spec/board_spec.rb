@@ -11,6 +11,9 @@ describe Board do
 
   it 'generates cells' do
     expect(board.cells).to be_a(Hash)
+    expect(board.cells.length).to eq(16)
+    expect(board.cells.first).to include("A1")
+    expect(board.cells.first[1]).to be_an_instance_of(Cell)
   end
 end
 
