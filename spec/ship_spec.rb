@@ -1,4 +1,3 @@
-require 'rspec'
 require './lib/ship.rb'
 
 describe Ship do
